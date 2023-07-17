@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>House Renting System</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <!--datatable-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap4.min.css">
+    <!--datatable-->
+
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+
+<!--tost link-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    </head>
+     
+
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="{% url 'tenant_home' %}">LOGO</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+
+            <div class="titile">
+              <h2 style="color: white;margin-left:15%;position: absolute;margin-top: -1.5%;">HOUSE RENTING AND SELLING SYSTEM</h2>
+            </div>
+
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+  
+                    
+                 
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ request.user }}<i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown ">
+                        <li><a class="dropdown-item text-dark" href="{% url 'logoutUser'%}">Logout</a></li>
+                        
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                        
+                          <hr>
+
+                            <a class="nav-link" href="{% url 'tenant_home' %}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                          <hr>
+
+                
+
+                            <a class="nav-link collapsed" href="{% url 'houses' %}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Houses
+                              
+                            </a>
+                            <hr>
+
+                          
+                            <a class="nav-link collapsed" href="{% url 'tenant_chat' %}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                               Chat
+                               
+                            </a>
+
+                           
+
+
+                        <hr>
+
+                            <a class="nav-link" href="{% url 'feed' %}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                              Feedback
+                            </a>
+
+                            <hr>
+
+
+
+                            <a class="nav-link" href="{% url 'payment' %}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-credit-card"></i></div>
+                               Payments
+                            </a>
+
+
+                            <hr>
+
+
+
+                        </div>
+                    </div>
+                   
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+           
+
+        <div class="content">
+      <div class="container-fluid">
+        
+        {% block content %}
+        
+        
+      
+        
+        
+        {% endblock %}
+
+
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+
+
+
+                
+                <footer class="py-4 bg-dark mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-center small">
+                            <div class="text-muted">Copyright &copy;2023</div>
+                            <div>
+                               
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    <!--ajax link for sending data to database -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!--toast link-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+        <script src="{% static 'js/scripts.js' %}"></script>
+
+        
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+        <script src="{% static 'js/datatable.js' %}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src=" https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="  https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap4.min.js"></script>
+     
+  
+        <script>
+            $(document).ready(function () {
+                    $('#mytable').DataTable();
+                });
+        </script>
+
+
+
+    </body>
+</html>

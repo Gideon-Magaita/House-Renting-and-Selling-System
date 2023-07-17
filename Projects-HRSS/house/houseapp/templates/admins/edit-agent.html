@@ -1,0 +1,33 @@
+{% extends 'admins/main.html'%}
+{% block content %}
+<div class="container">
+<h3 class="noti-title">Edit payment agent</h3>
+
+
+<!--messages-->
+{% include 'pages/message.html'%}
+<!--messages-->
+
+<!--modal-->
+
+<div class="row mt-5">
+    <div class="col-md-12">
+        <div class="card shadow">
+           
+            <div class="card-body">
+                
+                <form action="" method="POST">
+                    {% csrf_token %}
+    
+                    {{ form.as_p}}
+    
+                    <a href="{% url 'agent' %}" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                    <button type="submit" class="btn btn-primary">update</button>
+                </form>
+             
+            </div>
+          </div>
+    </div>
+</div>
+</div>
+{% endblock %}

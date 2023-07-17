@@ -1,0 +1,48 @@
+{% extends 'tenant/main.html' %}
+{% block content %}
+
+<div class="container-fluid mt-4 animate__animated animate__slideInUp">
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h2 class="animate__animated animate__slideInUp d-inline">House Location</h2>
+
+
+
+        <a class="btn btn-dark d-inline float-right" href="{% url 'houses' %}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+          
+
+      </div>
+   
+
+   
+    <div class="row mt-2">
+        <div class="col-md-12">
+   
+          <!--form location-->
+          <form method="post" class="form form-inline">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="input-group">
+                    {{ form.errors }}
+                    {{ form.as_p }}
+                </div>
+                <div class="input-group ml-5 mt-1">
+                    <button type="submit" class="btn btn-dark">Search</button>
+                </div>
+            </div>
+        </form>
+        <!--endform location-->
+
+            <div class="card shadow mb-3">
+                <div class="card-body">
+                    {{ m|safe }}
+                </div>
+              
+
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+{% endblock %}

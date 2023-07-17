@@ -1,0 +1,72 @@
+{% extends 'tenant/main.html' %}
+{% block content %}
+
+<div class="container">
+
+<!--messages-->
+{% include 'tenant/message.html'%}
+<!--messages-->
+
+        <h3 class="noti-title d-inline">Negotiation Room</h3>
+        <a class="btn btn-dark d-inline float-right" href="{% url 'houses' %}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    
+        <div class="row mt-5 mb-4">
+            <div class="col-md-6">
+                <div class="card card-style">
+                    <div class="card-body">
+                    
+                      
+                      <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p}}
+                        <button type="submit" class="btn btn-secondary form-control"><i class="fa fa-paper-plane" aria-hidden="true"></i>Send</button>
+                      </form>
+    
+                    </div>
+                </div>
+    
+          
+            </div>
+    
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header" style="background-color:#1d6472;color:white;">
+                        <p>Incoming Messages</p>
+                    </div>
+                    <div class="card-body" style="height: 400px; overflow-y: auto;">
+                        <ul class="list-group list-group-flush">
+                            
+                           {% if tenchat %}
+
+                           {% for message in tenchat %}
+
+                            <div class="list-group-item disabled">
+                              <p>Message From: {{ message.owner.username }}</p>
+                              <h5>{{ message.content }}</h5>
+                              
+                              <i class="text text-success">{{ message.timestamp }}</i>
+                            
+                              <br>
+                            </div>
+
+                          {% endfor %}
+
+                          {% else %}
+                          <p>No message for You</p>
+                          {% endif %}
+                           
+                          </ul>
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+    
+        </div>
+        
+    
+</div>
+
+{% endblock %}

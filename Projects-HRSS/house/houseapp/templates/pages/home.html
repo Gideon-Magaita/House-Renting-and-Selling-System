@@ -1,0 +1,70 @@
+{% extends 'pages/main.html' %}
+
+{% block content%}
+<div class="container">
+    <main>
+        <div class="container-fluid px-4">
+            <h3 class="mt-4 noti-title">Dashboard</h3>
+            <ol class="breadcrumb mb-4 p-2">
+                <li class="breadcrumb-item active">Welcome back , {{ request.user}}</li>
+            </ol>
+
+            <!--rowstarts-->
+            <div class="row">
+              
+                <div class="col-xl-4 col-md-6">
+                    <div class="card card-color text-white mb-4">
+                        <div class="card-body house">Available House</div>
+                        <div class="box-element">
+                            <h2>{{house}}</h2>
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="{% url 'description' %}">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-xl-4 col-md-6">
+                    <div class="card bg-info text-white mb-4">
+                        <div class="card-body house">Feedbacks</div>
+                        {% if feed %}
+                        <div class="box-element">
+                            <h2>{{feed}}</h2>
+                        </div>
+                        {% else %}
+                        <p class="p offset-4">No feedback yet</p>
+                        {% endif %}
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="{% url 'my_feedback' %}">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-xl-4 col-md-6">
+                    <div class="card bg-danger text-white mb-4">
+                        <div class="card-body house">Messages</div>
+                        <div class="box-element">
+                            <h2>{{message}}</h2>
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="{% url 'chat' %}">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--rowends-->
+        </div>
+        <!--rowdiv-->
+    </main>
+
+</div>
+{% endblock %}

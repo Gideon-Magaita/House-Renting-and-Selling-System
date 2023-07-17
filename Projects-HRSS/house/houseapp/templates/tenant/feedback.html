@@ -1,0 +1,100 @@
+{% extends 'tenant/main.html'%}
+{% block content %}
+
+<div class="container">
+    <h3 class="noti-title">Feedback</h3>
+
+    <div class="row">
+
+      <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>welcome! {{ request.user }}</strong> Send your feedback as one way or another to improve your service.
+      </div>
+     
+
+     
+                <!--loading spinner-->
+                <div id="loading-circle" style="display:none">
+                  <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                  <p>Loading...</p>
+                </div>
+                <!--loading spinner-->
+
+
+
+        <div class="col-xl-8 col-md-8">
+            <div class="card card-style card-content">
+                <div class="card-body">
+           
+                    <form id="my-form">
+                        {% csrf_token %}
+                        <input class="form-control" type="text" name="feedback" required>
+                        <br>
+                        <button type="submit" class="btn btn-secondary form-control" >Send</button>
+                    </form>
+     
+                   
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<!--toast link-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+<!--ajax link-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+  $(document).ready(function() {
+    $('#my-form').submit(function(e) {
+      e.preventDefault(); // prevent the default form submission behavior
+      
+      var formData = $(this).serialize(); // serialize the form data
+      
+      $.ajax({
+        url: '/ten_feedback/', // the Django URL where the data will be sent
+        type: 'POST',
+        data: formData,
+        beforeSend: function() {
+          // show the loading circle
+          $('#loading-circle').show();
+          
+          // start the timer to hide the loading circle after 3 seconds
+          setTimeout(function() {
+            $('#loading-circle').show();
+          }, 500);
+        },
+        success: function(response) {
+          console.log(response); // log the response from the server
+          
+          // show a toast notification
+          toastr.success('Feedback submitted successfully!');
+          
+          // reset the form
+          $('#my-form')[0].reset();
+        },
+        error: function(xhr, status, error) {
+          console.log(xhr.responseText); // log any errors that occur
+        },
+        complete: function() {
+          // hide the loading circle
+          $('#loading-circle').hide();
+
+          setTimeout(function() {
+            $('#loading-circle').hide();
+          }, 2000);
+        }
+      });
+    });
+  });
+  
+    </script>
+{% endblock %}

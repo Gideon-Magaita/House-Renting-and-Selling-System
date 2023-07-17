@@ -1,0 +1,33 @@
+{% extends 'tenant/main.html' %}
+{% block content %}
+
+<div class="container animate__animated animate__slideInUp">
+    <h2 class="animate__animated animate__slideInUp d-inline">Payment Procedures</h2>
+    <hr class="bg-primary opacity-100" style="height:3px" width="5%">
+
+    <div class="row">
+
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Hello! {{ request.user }}</strong> For the time being Payments can only be done through these agents.Make sure you have negotiated with the house owner and you have their valid phone numbers associated with these agents, If there is any issue please send <a href="{% url 'feed' %}" class="link text-decoration-none">feedback</a>
+    </div>
+   
+
+   
+
+      {% for agent in agents %}
+      <div class="col-md-3">
+        <div class="container">
+              
+          <img src="{{ agent.picture.url}}"  width="200" height="200" alt="image">
+          <p class="text ml-4 mt-3">{{ agent.caption }}</p>
+
+      </div>
+      </div>
+      {% endfor %}
+
+
+  </div>
+</div>
+
+{% endblock %}

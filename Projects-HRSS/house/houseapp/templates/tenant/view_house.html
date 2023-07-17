@@ -1,0 +1,82 @@
+{% extends 'tenant/main.html' %}
+{% block content %}
+
+<div class="container animate__animated animate__slideInUp">
+    <h2 class="animate__animated animate__slideInUp d-inline">House Details</h2>
+
+    <a class="btn btn-dark d-inline float-right" href="{% url 'houses' %}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+      
+
+    <div class="row mt-4">
+        {% if house %}
+        <div class="col-md-12">
+            <div class="card shadow p-3">
+                
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                     
+                        <th scope="col">House Owner</th>
+                        <th scope="col">House Number </th>
+                        <th scope="col">House Category </th>
+                        <th scope="col">House Location </th>
+                        <th scope="col">House Purpose </th>
+                        <th scope="col">House Price  </th>
+                        <th scope="col">House Capacity </th>
+                        <th scope="col">House Status </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+
+                        
+                        <td>{{house.owner}}</td>
+                        <td>{{house.number}}</td>
+                        <td>{{house.category}}</td>
+                        <td>{{house.location}}</td>
+                        <td>{{house.purpose}}</td>
+                        <td>Tsh.{{house.price}}</td>
+                        <td>{{house.rooms}}</td>
+                        <td>{{house.status}}</td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+
+           
+            <a  href="{% url 'tenant_chat' %}" class="btn btn-lg" style="color: #ffffff;background-color: #2CB6C9;">Start Chat</a>
+                
+            </div>
+             <!--link location-->
+    
+            <div class="input-group p-4">
+                <a href="{% url 'house_location' %}" class="btn btn-secondary">View on map</a>
+            </div>
+      
+            <!--endlink location-->
+            <!--rowends-->
+            
+        </div>
+        <!--col12ends-->     
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <div class="col-md-4">
+          <div class="container-image">
+              
+              <img src="{{ house.image.url}}"  width="300" height="300" alt="image" style="margin-left:-5%;">
+
+          </div>
+      </div>
+      </div>
+
+      <div class="col-md-6">
+        <video class="embed-responsive embed-responsive-21by9" controls="controls">
+          <source src="{{ house.video.url }}"  type="video/mp4">
+        </video>
+      </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,177 @@
+{% load static %}
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+	
+	<!--animate.css link-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<!--endanimate.css-->
+
+
+	<style>
+/* body,
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background: #9fb5b9 !important;
+} */
+.user_card {
+	width: 400px;
+	margin-top: auto;
+	margin-bottom: auto;
+	background: #ffffff;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 10px;
+    border-radius: 6px;
+
+
+}
+
+.form_container {
+	margin-top: 20px;
+}
+
+#form-title{
+	color: #fff;
+	
+}
+
+.login_btn {
+	width: 100%;
+	background: #1abc9c!important;
+	color: white !important;
+}
+.login_btn:focus {
+	box-shadow: none !important;
+	outline: 0px !important;
+}
+.login_container {
+	padding: 0 2rem;
+}
+.input-group-text {
+	background: #1abc9c !important;
+	color: white !important;
+	border: 0 !important;
+	border-radius: 0.25rem 0 0 0.25rem !important;
+}
+.input_user,
+.input_pass:focus {
+	box-shadow: none !important;
+	outline: 0px !important;
+}
+
+#messages{
+	background-color: grey;
+	color: #fff;
+	padding: 10px;
+	margin-top: 10px;
+}
+.header{
+	margin-top: 60px;
+	position: absolute;
+	margin-left: 250px;
+	font-weight: bold;
+	color: #fff;
+}
+.login-page {
+background: url(static/images/houseapp.png);
+background-repeat: no-repeat;
+height:600px;
+-webkit-background-size: cover !important;
+-moz-background-size: cover !important;
+-o-background-size: cover !important;
+background-size: cover !important;
+padding: 0;
+margin: 0;
+}
+.TogglePassword{
+	cursor: pointer;
+}
+</style>
+
+</head>
+<body class="login-page">
+	<div class="container h-100">
+        <div class="header">
+            <div class="text h2 text-bold text-uppercase animate__animated animate__fadeInDown" style="font-size:38px;color:rgb(255, 255, 255);margin-left: -5%;">
+			House Renting and Selling System
+			  </div>
+        </div> 
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card shadow">
+				<center>
+					{% for message in messages %}
+					{{message}}
+					{% endfor %}
+				</center>				
+				<div class="d-flex justify-content-center">
+					<h3 class="form-title animate__animated animate__fadeInDown" style="color:#1abc9c;">USER LOGIN</h3>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form method="POST" action="">
+                       {% csrf_token %}
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" name="username" placeholder="Username..." class="form-control">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+								<input type="password" name="password" placeholder="Password..." class="form-control" id="password"> 
+
+								<div class="input-group-append">
+									<span class="input-group-text TogglePassword">SHOW</span>
+								</div>
+						</div>
+						
+
+							<div class="d-flex justify-content-center mt-3 login_container">
+				 				<input class="btn login_btn" type="submit" value="Login">
+				   			</div>
+					</form>
+                    
+
+				</div>
+                <div class="mt-4">
+                    <div class="d-flex justify-content-center links">
+                       Don't have  an account? <a href="{% url 'register' %}" class="ml-2">Register</a>
+                    </div>
+                </div>
+		      <div class="msg">
+            
+          </div>
+				
+				</div>
+				
+			</div>
+		
+		</div>
+		<center>
+			<p style="color:rgb(255, 255, 255); font-size:18px;">@2023</p>
+		</center>
+		
+	</div>
+	
+
+<!--show and hide password functionality-->	
+ <script src="{% static 'js/password.js' %}"></script>
+<!--show and hide password functionality-->	
+
+</body>
+
+</html>

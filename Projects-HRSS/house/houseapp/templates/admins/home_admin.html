@@ -1,0 +1,73 @@
+{% extends 'admins/main.html' %}
+
+{% block content%}
+<style>
+    h2{
+        color:#ffff;
+    }
+</style>
+<div class="container animate__animated animate__slideInUp">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Admin Dashboard</h1>
+            <ol class="breadcrumb mb-4 p-3">
+                <li class="breadcrumb-item active">Welcome, {{ request.user }}</li>
+            </ol>
+
+            <!--rowstarts-->
+            <div class="row">
+              
+                <div class="col-xl-4 col-md-4">
+                    <div class="card card-color text-white mb-4">
+                        <div class="card-body house">Available House</div>
+                        <div class="box-element">
+                            <h2>{{  house }}</h2>
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="{% url 'house_view' %}">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+
+    
+
+                <div class="col-xl-4 col-md-4">
+                    <div class="card bg-info text-white mb-4">
+                        <div class="card-body house">Categories</div>
+                        <div class="box-element">
+                            <h2>{{ cat }}</h2>
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="{% url 'category' %}">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-xl-4 col-md-4">
+                    <div class="card bg-success text-white mb-4">
+                        <div class="card-body house">Feedbacks</div>
+                        <div class="box-element">
+                            <h2>{{ feed }}</h2>
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="{% url 'user_feedbacks' %}">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+<!--###############################endbox#########################-->
+
+            </div>
+        
+            <!--rowends-->
+        </div>
+        <!--rowdiv-->
+    </main>
+
+</div>
+{% endblock %}

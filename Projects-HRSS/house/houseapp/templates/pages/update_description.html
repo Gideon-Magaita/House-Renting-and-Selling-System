@@ -1,0 +1,67 @@
+{% extends 'pages/main.html'%}
+{% block content %}
+<div class="container mt-4">
+
+<!--messages-->
+{% for message in messages %}
+    {% if message.tags == 'success' %}
+      <!-- sweetalert js -->
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        var m = "{{ message }}";
+        Swal.fire({
+          icon: 'success',
+          iconHtml: '<i class="fa fa-check"></i>',
+          text: m,
+          confirmButtonColor: '#1d6472',
+          color: '#1d6472',
+          background: '#ffffff',
+          allowEscapeKey: false,
+          showClass: {
+            popup: 'my-icon'                     // disable popup animation css
+          },
+        });
+      </script>
+    {% else %}
+    <!-- sweetalert js -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      var m = "{{ message }}";
+      Swal.fire({
+        icon: 'error',
+        iconHtml: '<i class="fa fa-warning"></i>',
+        text: m,
+        confirmButtonColor: '##1d6472',
+        color: '#1d6472',
+        background: '#ffffff',
+        allowEscapeKey: false,
+        showClass: {
+          popup: 'my-icon'                     // disable popup animation css
+        },
+      });
+    </script>
+    {% endif %}
+  {% endfor %}
+<!--messages-->
+
+<div class="row justify-content-center">
+  <div class="col-md-7">
+      <div class="card  shadow mb-3">
+          <div class="card-header">
+              <p>House Details</p>
+          </div>
+          <div class="card-body">
+              <form action="" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+
+                  {{ form.as_p}}
+                  <center>
+                  <button type="submit" class="btn" style="background-color:#1d6472;color:white;">update</button>
+                  </center>
+                  </form> 
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+{% endblock %}
